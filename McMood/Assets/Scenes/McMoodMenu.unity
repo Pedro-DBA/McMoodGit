@@ -148,11 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646865f5270d6494b9f5908ac98c7615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scene_Manager
-  inputLogin: {fileID: 0}
-  inputSenha: {fileID: 0}
-  panelLogin: {fileID: 0}
-  panelMainMenu: {fileID: 0}
-  textoSaudacao: {fileID: 0}
 --- !u!4 &380794062
 Transform:
   m_ObjectHideFlags: 0

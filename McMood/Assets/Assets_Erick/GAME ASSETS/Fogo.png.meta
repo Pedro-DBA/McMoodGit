@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: b021afd7df23de343affdc1c90828c71
+guid: 6ba9ef5d2d553d64191c342461a17030
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4367598064667048139
-    second: Laternas Apagadas_0
-  - first:
-      213: -2743437634778771954
-    second: Laternas Apagadas_1
+      213: -7034016794902944284
+    second: Fogo (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Laternas Apagadas_0
+      name: Fogo (1)_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 5
-        width: 116
-        height: 81
+        x: 0
+        y: 0
+        width: 636
+        height: 824
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53746d163bc2363c0800000000000000
-      internalID: -4367598064667048139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Laternas Apagadas_1
-      rect:
-        serializedVersion: 2
-        x: 482
-        y: 5
-        width: 117
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e0ec29ba10a5de9d0800000000000000
-      internalID: -2743437634778771954
+      spriteID: 4e5adab2ef6226e90800000000000000
+      internalID: -7034016794902944284
       vertices: []
       indices: 
       edges: []
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Laternas Apagadas_0: -4367598064667048139
-      Laternas Apagadas_1: -2743437634778771954
+      Fogo (1)_0: -7034016794902944284
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -36,7 +36,7 @@ public static class UsuarioSessao
         if (string.IsNullOrEmpty(Nome))
             return;
 
-        // Include = pega também os textos de painéis que estão desativados
+
         TMP_Text[] textos = Object.FindObjectsByType<TMP_Text>(
             FindObjectsInactive.Include, FindObjectsSortMode.None);
 

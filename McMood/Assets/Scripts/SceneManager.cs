@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class SceneManager : MonoBehaviour
 {
     [Header("Paineis")]
     public GameObject panelClickToBegin;

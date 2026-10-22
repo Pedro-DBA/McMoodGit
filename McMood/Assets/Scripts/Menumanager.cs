@@ -1,12 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     [Header("Paineis")]
-    public GameObject panelClickToBegin;   // "Clique para começar"
+    public GameObject panelClickToBegin;   // "Clique para comecar"
     public GameObject panelMenu;           // Panel_Menu (com Button_funcionario e Button_proprietario)
     public GameObject panelFuncionario;
     public GameObject panelProprietario;
@@ -22,15 +21,15 @@ public class MenuManager : MonoBehaviour
     public GameObject popupAcessoNegado;   // painel no topo da tela, com o texto dentro
     public TMP_Text textoPopup;            // o texto TMP dentro do pop-up
     public string mensagemAcessoNegado = "Acesso negado.";
-    public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visível
-    public float tempoFade = 1.0f;         // duração do desaparecimento
+    public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visivel
+    public float tempoFade = 1.0f;         // duracao do desaparecimento
 
     private GameObject panelAtual; // painel de login aberto (Funcionario ou Proprietario)
     private Coroutine popupRoutine;
 
     void Start()
     {
-        // Estado inicial: só o "Clique para começar" aparece
+        // Estado inicial: so o "Clique para comecar" aparece
         panelClickToBegin.SetActive(true);
         panelMenu.SetActive(false);
         panelFuncionario.SetActive(false);
@@ -43,8 +42,8 @@ public class MenuManager : MonoBehaviour
     // OnClick() do Panel_ClickToBegin (o painel precisa ter um componente Button)
     public void ComecarClick()
     {
-        panelClickToBegin.SetActive(false); // use Destroy(panelClickToBegin) se quiser excluir de vez
-        panelMenu.SetActive(true);          // mostra os botões Funcionário/Proprietário
+        panelClickToBegin.SetActive(false);
+        panelMenu.SetActive(true);
     }
 
     // OnClick() do Button_funcionario
@@ -59,7 +58,7 @@ public class MenuManager : MonoBehaviour
         AbrirPainel(panelProprietario);
     }
 
-    // OnClick() do Button_Voltar (nos dois painéis): fecha o painel atual
+    // OnClick() do Button_Voltar (nos dois paineis): fecha o painel atual
     public void Voltar()
     {
         if (panelAtual != null)
@@ -70,12 +69,12 @@ public class MenuManager : MonoBehaviour
         panelMenu.SetActive(true);
     }
 
-    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuário
+    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuario
     public void Entrar()
     {
         string nome = inputUsuarioFuncionario.text;
 
-        // Vazio (ou só espaços) não passa
+        // Vazio (ou so espacos) nao passa
         if (string.IsNullOrWhiteSpace(nome))
         {
             MostrarPopup(mensagemUsuarioVazio);
@@ -83,10 +82,12 @@ public class MenuManager : MonoBehaviour
         }
 
         UsuarioSessao.Definir(nome); // vale para todas as cenas
-        SceneManager.LoadScene(nomeCenaJogo);
+
+        // Nome completo da classe do Unity, para nao confundir com a classe deste arquivo
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nomeCenaJogo);
     }
 
-    // OnClick() do Button_Entrar do PANEL_PROPRIETARIO: sempre nega, não troca de cena
+    // OnClick() do Button_Entrar do PANEL_PROPRIETARIO: sempre nega, nao troca de cena
     public void EntrarProprietario()
     {
         MostrarPopup(mensagemAcessoNegado);
@@ -103,7 +104,7 @@ public class MenuManager : MonoBehaviour
         if (textoPopup != null)
             textoPopup.text = mensagem;
 
-        // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animação
+        // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animacao
         if (popupRoutine != null)
             StopCoroutine(popupRoutine);
 
@@ -119,7 +120,7 @@ public class MenuManager : MonoBehaviour
         popupAcessoNegado.SetActive(true);
         grupo.alpha = 1f;
 
-        // Fica visível por um instante
+        // Fica visivel por um instante
         yield return new WaitForSeconds(tempoVisivel);
 
         // Some aos poucos

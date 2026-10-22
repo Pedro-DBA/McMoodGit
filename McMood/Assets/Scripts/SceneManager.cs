@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [Header("Paineis")]
-    public GameObject panelClickToBegin;   // "Clique para começar"
-    public GameObject panelMenu;           // Panel_Menu (com Button_funcionario e Button_proprietario)
+    public GameObject panelClickToBegin;
+    public GameObject panelMenu;
     public GameObject panelFuncionario;
     public GameObject panelProprietario;
 
     [Header("Cena do jogo")]
     public string nomeCenaJogo = "McMoodGame";
 
+<<<<<<< Updated upstream
     [Header("Login do funcionário")]
     public TMP_InputField inputUsuarioFuncionario; // InputField_Usuario do Panel_Funcionario
     public string mensagemUsuarioVazio = "Digite um nome de usuário.";
@@ -24,13 +25,19 @@ public class MenuManager : MonoBehaviour
     public string mensagemAcessoNegado = "Acesso negado.";
     public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visível
     public float tempoFade = 1.0f;         // duração do desaparecimento
+=======
+    [Header("Pop-up 'Acesso negado.'")]
+    public GameObject popupAcessoNegado;
+    public float tempoVisivel = 1.0f;
+    public float tempoFade = 1.0f;
+>>>>>>> Stashed changes
 
-    private GameObject panelAtual; // painel de login aberto (Funcionario ou Proprietario)
+    private GameObject panelAtual;
     private Coroutine popupRoutine;
 
     void Start()
     {
-        // Estado inicial: só o "Clique para começar" aparece
+        
         panelClickToBegin.SetActive(true);
         panelMenu.SetActive(false);
         panelFuncionario.SetActive(false);
@@ -40,26 +47,26 @@ public class MenuManager : MonoBehaviour
             popupAcessoNegado.SetActive(false);
     }
 
-    // OnClick() do Panel_ClickToBegin (o painel precisa ter um componente Button)
+
     public void ComecarClick()
     {
-        panelClickToBegin.SetActive(false); // use Destroy(panelClickToBegin) se quiser excluir de vez
-        panelMenu.SetActive(true);          // mostra os botões Funcionário/Proprietário
+        panelClickToBegin.SetActive(false);
+        panelMenu.SetActive(true);
     }
 
-    // OnClick() do Button_funcionario
+    
     public void AbrirFuncionario()
     {
         AbrirPainel(panelFuncionario);
     }
 
-    // OnClick() do Button_proprietario
+    
     public void AbrirProprietario()
     {
         AbrirPainel(panelProprietario);
     }
 
-    // OnClick() do Button_Voltar (nos dois painéis): fecha o painel atual
+    
     public void Voltar()
     {
         if (panelAtual != null)
@@ -70,7 +77,11 @@ public class MenuManager : MonoBehaviour
         panelMenu.SetActive(true);
     }
 
+<<<<<<< Updated upstream
     // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuário
+=======
+    
+>>>>>>> Stashed changes
     public void Entrar()
     {
         string nome = inputUsuarioFuncionario.text;
@@ -86,7 +97,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(nomeCenaJogo);
     }
 
-    // OnClick() do Button_Entrar do PANEL_PROPRIETARIO: sempre nega, não troca de cena
+    
     public void EntrarProprietario()
     {
         MostrarPopup(mensagemAcessoNegado);
@@ -100,10 +111,14 @@ public class MenuManager : MonoBehaviour
             return;
         }
 
+<<<<<<< Updated upstream
         if (textoPopup != null)
             textoPopup.text = mensagem;
 
         // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animação
+=======
+        
+>>>>>>> Stashed changes
         if (popupRoutine != null)
             StopCoroutine(popupRoutine);
 
@@ -119,10 +134,10 @@ public class MenuManager : MonoBehaviour
         popupAcessoNegado.SetActive(true);
         grupo.alpha = 1f;
 
-        // Fica visível por um instante
+        
         yield return new WaitForSeconds(tempoVisivel);
 
-        // Some aos poucos
+        
         float t = 0f;
         while (t < tempoFade)
         {

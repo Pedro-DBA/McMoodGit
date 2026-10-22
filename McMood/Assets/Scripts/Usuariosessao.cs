@@ -2,26 +2,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Guarda o nome do usuário e troca "[Usuário]" por ele em TODOS os textos TMP
-// de TODAS as cenas. Não precisa colocar em nenhum objeto: roda sozinho.
+
 public static class UsuarioSessao
 {
-    public const string Marcador = "[Usuário]"; // "[Usuário]"
+    public const string Marcador = "[Usuário]";
 
     public static string Nome { get; private set; } = "";
 
-    // Chamado pelo MenuManager quando o login do funcionário é aceito
     public static void Definir(string nome)
     {
         Nome = nome.Trim();
-        AplicarNaCenaAtual(); // atualiza também a cena que já está aberta
+        AplicarNaCenaAtual();
     }
 
-    // Registra o gancho que roda a cada cena carregada
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void Registrar()
     {
-        Nome = ""; // evita sobrar valor antigo se o Domain Reload estiver desligado
+        Nome = "";
         SceneManager.sceneLoaded -= AoCarregarCena;
         SceneManager.sceneLoaded += AoCarregarCena;
     }

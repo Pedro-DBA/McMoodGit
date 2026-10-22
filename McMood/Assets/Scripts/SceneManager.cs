@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
@@ -15,15 +14,15 @@ public class SceneManager : MonoBehaviour
     public string nomeCenaJogo = "McMoodGame";
 
     [Header("Login do funcion\u00e1rio")]
-    public TMP_InputField inputUsuarioFuncionario; // InputField_Usuario do Panel_Funcionario
+    public TMP_InputField inputUsuarioFuncionario;
     public string mensagemUsuarioVazio = "Digite um nome de usu\u00e1rio.";
 
     [Header("Pop-up (topo da tela)")]
-    public GameObject popupAcessoNegado;   // painel no topo da tela, com o texto dentro
-    public TMP_Text textoPopup;            // o texto TMP dentro do pop-up
+    public GameObject popupAcessoNegado;
+    public TMP_Text textoPopup;
     public string mensagemAcessoNegado = "Acesso negado.";
-    public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visivel
-    public float tempoFade = 1.0f;         // duracao do desaparecimento
+    public float tempoVisivel = 1.0f;
+    public float tempoFade = 1.0f;
 
     private GameObject panelAtual;
     private Coroutine popupRoutine;
@@ -70,20 +69,18 @@ public class SceneManager : MonoBehaviour
         panelMenu.SetActive(true);
     }
 
-    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuario
     public void Entrar()
     {
         string nome = inputUsuarioFuncionario.text;
 
-        // Vazio (ou so espacos) nao passa
         if (string.IsNullOrWhiteSpace(nome))
         {
             MostrarPopup(mensagemUsuarioVazio);
             return;
         }
 
-        UsuarioSessao.Definir(nome); // vale para todas as cenas
-        SceneManager.LoadScene(nomeCenaJogo);
+        UsuarioSessao.Definir(nome);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nomeCenaJogo);
     }
 
 
@@ -103,7 +100,6 @@ public class SceneManager : MonoBehaviour
         if (textoPopup != null)
             textoPopup.text = mensagem;
 
-        // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animacao
         if (popupRoutine != null)
             StopCoroutine(popupRoutine);
 

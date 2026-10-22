@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 23092347}
   - component: {fileID: 23092346}
   - component: {fileID: 23092345}
+  - component: {fileID: 23092348}
   m_Layer: 5
   m_Name: Button_Entrar
   m_TagString: Untagged
@@ -252,6 +253,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23092343}
   m_CullTransparentMesh: 1
+--- !u!114 &23092348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23092343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b012ae33405093a419ab0412279c4d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anim_Botoes
+  spriteNormal: {fileID: 712504401208848030, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
+  spritePressionado: {fileID: 21197529, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
 --- !u!1 &42387418
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +909,7 @@ GameObject:
   - component: {fileID: 251571200}
   - component: {fileID: 251571199}
   - component: {fileID: 251571198}
+  - component: {fileID: 251571201}
   m_Layer: 5
   m_Name: Button_proprietario
   m_TagString: Untagged
@@ -1015,6 +1031,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251571196}
   m_CullTransparentMesh: 1
+--- !u!114 &251571201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251571196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b012ae33405093a419ab0412279c4d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anim_Botoes
+  spriteNormal: {fileID: -683225158084640029, guid: 5f377a2d1ed50ba4dace758cce221c0c, type: 3}
+  spritePressionado: {fileID: 892571185, guid: 5f377a2d1ed50ba4dace758cce221c0c, type: 3}
 --- !u!1 &265657112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,6 +2211,7 @@ GameObject:
   - component: {fileID: 589520151}
   - component: {fileID: 589520150}
   - component: {fileID: 589520149}
+  - component: {fileID: 589520152}
   m_Layer: 5
   m_Name: Button_Entrar
   m_TagString: Untagged
@@ -2302,6 +2333,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589520147}
   m_CullTransparentMesh: 1
+--- !u!114 &589520152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589520147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b012ae33405093a419ab0412279c4d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anim_Botoes
+  spriteNormal: {fileID: 712504401208848030, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
+  spritePressionado: {fileID: 21197529, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,6 +2540,8 @@ GameObject:
   - component: {fileID: 726895096}
   - component: {fileID: 726895095}
   - component: {fileID: 726895094}
+  - component: {fileID: 726895098}
+  - component: {fileID: 726895097}
   m_Layer: 5
   m_Name: Button_funcionario
   m_TagString: Untagged
@@ -2616,6 +2663,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726895092}
   m_CullTransparentMesh: 1
+--- !u!114 &726895097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726895092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b012ae33405093a419ab0412279c4d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anim_Botoes
+  spriteNormal: {fileID: -1465564214, guid: 5f377a2d1ed50ba4dace758cce221c0c, type: 3}
+  spritePressionado: {fileID: -495561257, guid: 5f377a2d1ed50ba4dace758cce221c0c, type: 3}
+--- !u!212 &726895098
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726895092}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
 --- !u!1 &754231365
 GameObject:
   m_ObjectHideFlags: 0
@@ -5200,6 +5321,7 @@ GameObject:
   - component: {fileID: 1634869303}
   - component: {fileID: 1634869302}
   - component: {fileID: 1634869301}
+  - component: {fileID: 1634869304}
   m_Layer: 5
   m_Name: Button_Voltar
   m_TagString: Untagged
@@ -5321,6 +5443,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634869299}
   m_CullTransparentMesh: 1
+--- !u!114 &1634869304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634869299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b012ae33405093a419ab0412279c4d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anim_Botoes
+  spriteNormal: {fileID: 712504401208848030, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
+  spritePressionado: {fileID: 21197529, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
 --- !u!1 &1681746062
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,6 +5901,7 @@ GameObject:
   - component: {fileID: 1883403181}
   - component: {fileID: 1883403180}
   - component: {fileID: 1883403179}
+  - component: {fileID: 1883403182}
   m_Layer: 5
   m_Name: Button_Voltar
   m_TagString: Untagged
@@ -5886,6 +6023,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883403177}
   m_CullTransparentMesh: 1
+--- !u!114 &1883403182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883403177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b012ae33405093a419ab0412279c4d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anim_Botoes
+  spriteNormal: {fileID: 712504401208848030, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
+  spritePressionado: {fileID: 21197529, guid: 5e4f3cb6c8dcf5a4cbf4fbd542c2979a, type: 3}
 --- !u!1 &1919315326
 GameObject:
   m_ObjectHideFlags: 0

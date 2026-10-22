@@ -1264,7 +1264,6 @@ RectTransform:
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 696987307}
   - {fileID: 1996101066}
   - {fileID: 772681974}
   - {fileID: 2081317732}
@@ -1380,7 +1379,11 @@ MonoBehaviour:
   panelFuncionario: {fileID: 1542876615}
   panelProprietario: {fileID: 317209649}
   nomeCenaJogo: McMoodGame
+  inputUsuarioFuncionario: {fileID: 179770700}
+  mensagemUsuarioVazio: "Digite um nome de usu\xE1rio."
   popupAcessoNegado: {fileID: 696987306}
+  textoPopup: {fileID: 786135950}
+  mensagemAcessoNegado: Acesso negado.
   tempoVisivel: 0.75
   tempoFade: 0.55
 --- !u!1 &440773889
@@ -2479,16 +2482,16 @@ RectTransform:
   m_GameObject: {fileID: 696987306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 786135949}
-  m_Father: {fileID: 317209650}
+  m_Father: {fileID: 954479258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 394.81332}
-  m_SizeDelta: {x: -570.43, y: -855.06006}
+  m_AnchoredPosition: {x: 0, y: 79.109985}
+  m_SizeDelta: {x: -570.43, y: -1449.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696987308
 MonoBehaviour:
@@ -3652,6 +3655,7 @@ RectTransform:
   - {fileID: 576790535}
   - {fileID: 1542876616}
   - {fileID: 317209650}
+  - {fileID: 696987307}
   - {fileID: 754231366}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5106,7 +5110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1542876616
 RectTransform:
   m_ObjectHideFlags: 0

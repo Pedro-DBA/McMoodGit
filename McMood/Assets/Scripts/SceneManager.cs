@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,8 +14,14 @@ public class MenuManager : MonoBehaviour
     [Header("Cena do jogo")]
     public string nomeCenaJogo = "McMoodGame";
 
-    [Header("Pop-up 'Acesso negado.'")]
+    [Header("Login do funcionário")]
+    public TMP_InputField inputUsuarioFuncionario; // InputField_Usuario do Panel_Funcionario
+    public string mensagemUsuarioVazio = "Digite um nome de usuário.";
+
+    [Header("Pop-up (topo da tela)")]
     public GameObject popupAcessoNegado;   // painel no topo da tela, com o texto dentro
+    public TMP_Text textoPopup;            // o texto TMP dentro do pop-up
+    public string mensagemAcessoNegado = "Acesso negado.";
     public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visível
     public float tempoFade = 1.0f;         // duração do desaparecimento
 
@@ -63,25 +70,38 @@ public class MenuManager : MonoBehaviour
         panelMenu.SetActive(true);
     }
 
-    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: vai para a cena do jogo
+    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuário
     public void Entrar()
     {
+        string nome = inputUsuarioFuncionario.text;
+
+        // Vazio (ou só espaços) não passa
+        if (string.IsNullOrWhiteSpace(nome))
+        {
+            MostrarPopup(mensagemUsuarioVazio);
+            return;
+        }
+
+        UsuarioSessao.Definir(nome); // vale para todas as cenas
         SceneManager.LoadScene(nomeCenaJogo);
     }
 
     // OnClick() do Button_Entrar do PANEL_PROPRIETARIO: sempre nega, não troca de cena
     public void EntrarProprietario()
     {
-        MostrarPopup();
+        MostrarPopup(mensagemAcessoNegado);
     }
 
-    private void MostrarPopup()
+    private void MostrarPopup(string mensagem)
     {
         if (popupAcessoNegado == null)
         {
             Debug.LogWarning("popupAcessoNegado não foi atribuído no Inspector.");
             return;
         }
+
+        if (textoPopup != null)
+            textoPopup.text = mensagem;
 
         // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animação
         if (popupRoutine != null)

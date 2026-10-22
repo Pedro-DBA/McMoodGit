@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public static class UsuarioSessao
 {
@@ -19,8 +19,8 @@ public static class UsuarioSessao
     private static void Registrar()
     {
         Nome = "";
-        SceneManager.sceneLoaded -= AoCarregarCena;
-        SceneManager.sceneLoaded += AoCarregarCena;
+        UnitySceneManager.sceneLoaded -= AoCarregarCena;
+        UnitySceneManager.sceneLoaded += AoCarregarCena;
     }
 
     private static void AoCarregarCena(Scene cena, LoadSceneMode modo)
@@ -32,7 +32,6 @@ public static class UsuarioSessao
     {
         if (string.IsNullOrEmpty(Nome))
             return;
-
 
         TMP_Text[] textos = Object.FindObjectsByType<TMP_Text>(
             FindObjectsInactive.Include, FindObjectsSortMode.None);

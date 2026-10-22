@@ -14,30 +14,23 @@ public class MenuManager : MonoBehaviour
     [Header("Cena do jogo")]
     public string nomeCenaJogo = "McMoodGame";
 
-<<<<<<< Updated upstream
-    [Header("Login do funcionário")]
+    [Header("Login do funcion\u00e1rio")]
     public TMP_InputField inputUsuarioFuncionario; // InputField_Usuario do Panel_Funcionario
-    public string mensagemUsuarioVazio = "Digite um nome de usuário.";
+    public string mensagemUsuarioVazio = "Digite um nome de usu\u00e1rio.";
 
     [Header("Pop-up (topo da tela)")]
     public GameObject popupAcessoNegado;   // painel no topo da tela, com o texto dentro
     public TMP_Text textoPopup;            // o texto TMP dentro do pop-up
     public string mensagemAcessoNegado = "Acesso negado.";
-    public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visível
-    public float tempoFade = 1.0f;         // duração do desaparecimento
-=======
-    [Header("Pop-up 'Acesso negado.'")]
-    public GameObject popupAcessoNegado;
-    public float tempoVisivel = 1.0f;
-    public float tempoFade = 1.0f;
->>>>>>> Stashed changes
+    public float tempoVisivel = 1.0f;      // quanto tempo fica totalmente visivel
+    public float tempoFade = 1.0f;         // duracao do desaparecimento
 
     private GameObject panelAtual;
     private Coroutine popupRoutine;
 
     void Start()
     {
-        
+
         panelClickToBegin.SetActive(true);
         panelMenu.SetActive(false);
         panelFuncionario.SetActive(false);
@@ -54,19 +47,19 @@ public class MenuManager : MonoBehaviour
         panelMenu.SetActive(true);
     }
 
-    
+
     public void AbrirFuncionario()
     {
         AbrirPainel(panelFuncionario);
     }
 
-    
+
     public void AbrirProprietario()
     {
         AbrirPainel(panelProprietario);
     }
 
-    
+
     public void Voltar()
     {
         if (panelAtual != null)
@@ -77,16 +70,12 @@ public class MenuManager : MonoBehaviour
         panelMenu.SetActive(true);
     }
 
-<<<<<<< Updated upstream
-    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuário
-=======
-    
->>>>>>> Stashed changes
+    // OnClick() do Button_Entrar do PANEL_FUNCIONARIO: exige algo escrito no usuario
     public void Entrar()
     {
         string nome = inputUsuarioFuncionario.text;
 
-        // Vazio (ou só espaços) não passa
+        // Vazio (ou so espacos) nao passa
         if (string.IsNullOrWhiteSpace(nome))
         {
             MostrarPopup(mensagemUsuarioVazio);
@@ -97,7 +86,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(nomeCenaJogo);
     }
 
-    
+
     public void EntrarProprietario()
     {
         MostrarPopup(mensagemAcessoNegado);
@@ -107,18 +96,14 @@ public class MenuManager : MonoBehaviour
     {
         if (popupAcessoNegado == null)
         {
-            Debug.LogWarning("popupAcessoNegado não foi atribuído no Inspector.");
+            Debug.LogWarning("popupAcessoNegado n\u00e3o foi atribu\u00eddo no Inspector.");
             return;
         }
 
-<<<<<<< Updated upstream
         if (textoPopup != null)
             textoPopup.text = mensagem;
 
-        // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animação
-=======
-        
->>>>>>> Stashed changes
+        // Se clicar de novo enquanto o pop-up ainda aparece, reinicia a animacao
         if (popupRoutine != null)
             StopCoroutine(popupRoutine);
 
@@ -134,10 +119,10 @@ public class MenuManager : MonoBehaviour
         popupAcessoNegado.SetActive(true);
         grupo.alpha = 1f;
 
-        
+
         yield return new WaitForSeconds(tempoVisivel);
 
-        
+
         float t = 0f;
         while (t < tempoFade)
         {

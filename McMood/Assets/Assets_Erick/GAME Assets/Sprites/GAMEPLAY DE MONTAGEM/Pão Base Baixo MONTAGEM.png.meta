@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5f377a2d1ed50ba4dace758cce221c0c
+guid: a315ef8221a81474eb38d5cbccae3418
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -683225158084640029
-    second: MenuUISpritesheet_0
+      213: 5109681592592026989
+    second: "P\xE3o Base Baixo_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -126,89 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MenuUISpritesheet_0
+      name: "P\xE3o Base Baixo_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
-        width: 248
-        height: 240
+        y: 0
+        width: 400
+        height: 252
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e241cea652b486f0800000000000000
-      internalID: -683225158084640029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MenuUISpritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 248
-        y: 240
-        width: 248
-        height: 240
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55b42282de447d446bef5f7534f63964
-      internalID: 892571185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MenuUISpritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 248
-        height: 240
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09d9029978f0d7640956a2825fdf93dd
-      internalID: -1465564214
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MenuUISpritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 248
-        y: 0
-        width: 248
-        height: 240
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72ed8af3e2e0d8e49b24ee63f9f05829
-      internalID: -495561257
+      spriteID: d6dccc1165c39e640800000000000000
+      internalID: 5109681592592026989
       vertices: []
       indices: 
       edges: []
@@ -217,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 103b2802376fc7446b46d489a4c3aece
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -225,14 +159,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":2.0},"gridSpriteSize":{"x":248.0,"y":240.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      MenuUISpritesheet_0: -683225158084640029
-      MenuUISpritesheet_1: 892571185
-      MenuUISpritesheet_2: -1465564214
-      MenuUISpritesheet_3: -495561257
+      "P\xE3o Base Baixo_0": 5109681592592026989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

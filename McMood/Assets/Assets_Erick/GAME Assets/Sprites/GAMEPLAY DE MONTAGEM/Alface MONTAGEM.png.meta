@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de15e7eb91ae74c4fa6723f9cb4aaaa4
+guid: a39122c7a0e10d941ad0a724418302c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6411675139416172028
-    second: PaoComumCriacao_0
+      213: -8614246376554259369
+    second: Alface MONTAGEM_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PaoComumCriacao_0
+      name: Alface MONTAGEM_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 292
-        height: 84
+        x: 30
+        y: 58
+        width: 470
+        height: 227
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40a55e36e672507a0800000000000000
-      internalID: -6411675139416172028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PaoComumCriacao_1
-      rect:
-        serializedVersion: 2
-        x: 292
-        y: 0
-        width: 292
-        height: 84
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5925b97734b24b4abe9d9451ce81c22
-      internalID: 155713629
+      spriteID: 75c99cd8f8c047880800000000000000
+      internalID: -8614246376554259369
       vertices: []
       indices: 
       edges: []
@@ -173,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3a7d5712c8602d445a2fc087ebafe7ce
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -181,12 +159,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":292.0,"y":84.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      PaoComumCriacao_0: -6411675139416172028
-      PaoComumCriacao_1: 155713629
+      Alface MONTAGEM_0: -8614246376554259369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,22 +6,23 @@ public class BurgerBuilder : MonoBehaviour
 {
     public enum State { SelectingBase, SelectingIngredients, Finished }
 
-    [SerializeField] private List<ComboData>  combos  = new();
+    [SerializeField] private List<ComboData> combos = new();
     [SerializeField] private List<RecipeData> recipes = new();
+    [SerializeField] private EnergySystem energy;
 
-  
-    public event Action<State>                    OnStateChanged;
-    public event Action<IngredientData>           OnBaseSelected;
-    public event Action<IngredientData>           OnIngredientAdded;
-    public event Action<ComboData>                OnComboTriggered;
-    public event Action<RecipeData, bool>         OnRecipeDiscovered;
-    public event Action<int>                      OnScoreChanged;
-    public event Action<int, int>                 OnFinished;
+    public event Action<State> OnStateChanged;
+    public event Action<IngredientData> OnBaseSelected;
+    public event Action<IngredientData> OnIngredientAdded;
+    public event Action<ComboData> OnComboTriggered;
+    public event Action<RecipeData, bool> OnRecipeDiscovered;
+    public event Action<int> OnScoreChanged;
+    public event Action<int, int> OnFinished;
+    public event Action OnNotEnoughEnergy;
 
     public State CurrentState { get; private set; } = State.SelectingBase;
-    public int Score  { get; private set; }
+    public int Score { get; private set; }
     public int Hearts { get; private set; }
-    public int Stars  { get; private set; }
+    public int Stars { get; private set; }
     public IngredientData Base { get; private set; }
     public int IngredientsRemaining => GameRules.IngredientsPerBurger - placed.Count;
 
@@ -36,10 +37,29 @@ public class BurgerBuilder : MonoBehaviour
                 Debug.LogWarning($"Receita duplicada (mesma combinação): {r.name}");
     }
 
+    private void OnEnable() => ResetBuild();
+
+    public void ResetBuild()
+    {
+        placed.Clear();
+        triggered.Clear();
+        Base = null;
+        Score = 0; Hearts = 0; Stars = 0;
+        OnScoreChanged?.Invoke(Score);
+        SetState(State.SelectingBase);
+    }
+
     public void SelectBase(IngredientData baseItem)
     {
         if (CurrentState != State.SelectingBase) return;
-        Base = baseItem;                       
+
+        if (energy != null && !energy.TryConsume(1))
+        {
+            OnNotEnoughEnergy?.Invoke();
+            return;
+        }
+
+        Base = baseItem;
         OnBaseSelected?.Invoke(baseItem);
         SetState(State.SelectingIngredients);
     }
@@ -66,7 +86,7 @@ public class BurgerBuilder : MonoBehaviour
 
             triggered.Add(combo);
             Hearts += combo.hearts;
-            AddScore(combo.hearts * GameRules.PointsPerHeart);   
+            AddScore(combo.hearts * GameRules.PointsPerHeart);
             OnComboTriggered?.Invoke(combo);
         }
     }
@@ -77,7 +97,7 @@ public class BurgerBuilder : MonoBehaviour
         {
             bool firstTime = !IsDiscovered(recipe);
 
-            Hearts += recipe.hearts;                              
+            Hearts += recipe.hearts;
             AddScore(recipe.hearts * GameRules.PointsPerHeart);
 
             if (firstTime)
@@ -94,9 +114,8 @@ public class BurgerBuilder : MonoBehaviour
     }
 
     private void AddScore(int amount) { Score += amount; OnScoreChanged?.Invoke(Score); }
-    private void SetState(State s)    { CurrentState = s; OnStateChanged?.Invoke(s); }
+    private void SetState(State s) { CurrentState = s; OnStateChanged?.Invoke(s); }
 
-
-    private static bool IsDiscovered(RecipeData r)  => PlayerPrefs.GetInt("recipe_" + r.Id, 0) == 1;
-    private static void MarkDiscovered(RecipeData r){ PlayerPrefs.SetInt("recipe_" + r.Id, 1); PlayerPrefs.Save(); }
+    private static bool IsDiscovered(RecipeData r) => PlayerPrefs.GetInt("recipe_" + r.Id, 0) == 1;
+    private static void MarkDiscovered(RecipeData r) { PlayerPrefs.SetInt("recipe_" + r.Id, 1); PlayerPrefs.Save(); }
 }

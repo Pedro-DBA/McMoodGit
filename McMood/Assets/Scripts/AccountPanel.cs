@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -23,7 +22,7 @@ public class AccountPanel : MonoBehaviour
     private void Awake()
     {
         if (establishmentButton != null) establishmentButton.onClick.AddListener(OpenEstablishment);
-        if (logoutButton != null)        logoutButton.onClick.AddListener(Logout);
+        if (logoutButton != null) logoutButton.onClick.AddListener(Logout);
     }
 
     // Sempre que a aba Conta abre, o sub-painel começa fechado.
@@ -43,6 +42,7 @@ public class AccountPanel : MonoBehaviour
     public void Logout()
     {
         onLogout?.Invoke();
-        SceneManager.LoadScene(menuSceneName);
+        // Nome completo de propósito: o projeto tem uma classe própria chamada SceneManager.
+        UnityEngine.SceneManagement.SceneManager.LoadScene(menuSceneName);
     }
 }

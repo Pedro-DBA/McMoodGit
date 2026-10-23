@@ -16,7 +16,7 @@ public class AccountPanel : MonoBehaviour
     [Header("Logout")]
     [SerializeField] private Button logoutButton;              // Button_Logout
     [SerializeField] private string menuSceneName = "McMoodMenu";
-    [Tooltip("Ligue aqui o que limpa a sessão do login (ex: apagar o usuário salvo). Roda ANTES de trocar de cena.")]
+    [Tooltip("Opcional: outras ações extras ao sair. O nome do usuário já é limpo automaticamente (UsuarioSessao.Limpar).")]
     [SerializeField] private UnityEvent onLogout;
 
     private void Awake()
@@ -41,6 +41,7 @@ public class AccountPanel : MonoBehaviour
 
     public void Logout()
     {
+        UsuarioSessao.Limpar();      // apaga o nome do jogador da sessão (método a adicionar no UsuarioSessao)
         onLogout?.Invoke();
         // Nome completo de propósito: o projeto tem uma classe própria chamada SceneManager.
         UnityEngine.SceneManagement.SceneManager.LoadScene(menuSceneName);

@@ -15,6 +15,11 @@ public static class UsuarioSessao
         AplicarNaCenaAtual();
     }
 
+    public static void Limpar()
+    {
+        Nome = "";
+    }
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void Registrar()
     {

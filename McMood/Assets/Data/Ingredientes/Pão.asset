@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e665f97a850a10f47a2dd4f34d134467, type: 3}
   m_Name: "P\xE3o"
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
-  id: 
-  displayName: 
+  id: pao
+  displayName: "P\xE3o"
   listIcon: {fileID: 0}
-  plateSprite: {fileID: 0}
-  topSprite: {fileID: 0}
-  layerHeight: 25
+  plateSprite: {fileID: 21300000, guid: a315ef8221a81474eb38d5cbccae3418, type: 3}
+  topSprite: {fileID: 21300000, guid: 3d96cde7024306a46a8de4af92cd548f, type: 3}
+  layerHeight: 70

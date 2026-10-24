@@ -4,18 +4,16 @@ using UnityEngine;
 public class BurgerHUD : MonoBehaviour
 {
     [SerializeField] private BurgerBuilder builder;
-    [SerializeField] private EnergySystem energy;
-    [SerializeField] private TMP_Text energyText;
-    [SerializeField] private TMP_Text scoreText;
-    [SerializeField] private TMP_Text remainingText;
-    [SerializeField] private TMP_Text instructionText;
-    [SerializeField] private TMP_Text comboBannerText;
-    [SerializeField] private TMP_Text priceText;
+    [SerializeField] private EnergySystem energy;       // o mesmo usado no BurgerBuilder
+    [SerializeField] private TMP_Text energyText;       // "1/1MP"
+    [SerializeField] private TMP_Text remainingText;    // "1 Ingrediente restante"
+    [SerializeField] private TMP_Text instructionText;  // barra de baixo
+    [SerializeField] private TMP_Text comboBannerText;  // "Verde no Ponto!"
+    [SerializeField] private TMP_Text priceText;        // preço final
 
     private void OnEnable()
     {
         builder.OnStateChanged += HandleState;
-        builder.OnScoreChanged += HandleScore;
         builder.OnIngredientAdded += HandleIngredient;
         builder.OnComboTriggered += HandleCombo;
         builder.OnFinished += HandleFinished;
@@ -23,7 +21,6 @@ public class BurgerHUD : MonoBehaviour
         if (energy != null) energy.OnEnergyChanged += HandleEnergy;
 
         HandleState(builder.CurrentState);
-        HandleScore(builder.Score);
         if (energy != null) HandleEnergy(energy.Current, energy.Max);
         if (comboBannerText != null) comboBannerText.text = "";
         if (priceText != null) priceText.text = "";
@@ -32,7 +29,6 @@ public class BurgerHUD : MonoBehaviour
     private void OnDisable()
     {
         builder.OnStateChanged -= HandleState;
-        builder.OnScoreChanged -= HandleScore;
         builder.OnIngredientAdded -= HandleIngredient;
         builder.OnComboTriggered -= HandleCombo;
         builder.OnFinished -= HandleFinished;
@@ -43,12 +39,11 @@ public class BurgerHUD : MonoBehaviour
     private void HandleEnergy(int current, int max)
     {
         if (energyText != null) energyText.text = $"{current}/{max}MP";
+        // Se voltou MP enquanto o aviso "Sem MP" estava na tela, restaura a instrução.
         HandleState(builder.CurrentState);
     }
 
-    private void HandleNoEnergy() => instructionText.text = "Sem MP! Volte amanhã";
-
-    private void HandleScore(int s) => scoreText.text = s.ToString("D6");
+    private void HandleNoEnergy() => instructionText.text = "Sem MP! Aguarde recarregar";
 
     private void HandleIngredient(IngredientData _) => RefreshRemaining();
 

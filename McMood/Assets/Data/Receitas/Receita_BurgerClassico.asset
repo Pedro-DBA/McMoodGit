@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b06c0dbc58384d4b8f518a92b5bb9aa, type: 3}
+  m_Name: Receita_BurgerClassico
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeData
+  id: burger_classico
+  recipeName: Burger Classico
+  ingredients:
+  - {fileID: 11400000, guid: 2f6d5cd07cb18894096c9f19eefda905, type: 2}
+  - {fileID: 11400000, guid: 628fb3f59d8c06440aa3f4e79c0ca430, type: 2}
+  - {fileID: 11400000, guid: 0cadf266eee7fc14dbc7c6a29997da3d, type: 2}
+  normalSprite: {fileID: -7037207242215740368, guid: 686658624d5b3094580f900de37c56ca, type: 3}
+  evolvedSprite: {fileID: -449804732, guid: 686658624d5b3094580f900de37c56ca, type: 3}
+  hearts: 9
+  stars: 5

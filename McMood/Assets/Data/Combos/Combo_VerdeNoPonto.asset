@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3fee912dbaee2744a8b0c7c1e0568b8, type: 3}
-  m_Name: Combo_
+  m_Name: Combo_VerdeNoPonto
   m_EditorClassIdentifier: Assembly-CSharp::ComboData
-  comboName: 
-  bannerIcon: {fileID: 0}
-  required: []
-  hearts: 3
+  comboName: Verde no Ponto!
+  bannerIcon: {fileID: 21300000, guid: a61d84641678c5c4eb558e6876c9fde2, type: 3}
+  required:
+  - {fileID: 11400000, guid: 2f6d5cd07cb18894096c9f19eefda905, type: 2}
+  - {fileID: 11400000, guid: 628fb3f59d8c06440aa3f4e79c0ca430, type: 2}
+  hearts: 9

@@ -10,11 +10,16 @@ public class BurgerBuilder : MonoBehaviour
     [SerializeField] private List<RecipeData> recipes = new();
     [SerializeField] private EnergySystem energy;
 
+    [Tooltip("Se marcado, o mesmo ingrediente pode ser usado mais de uma vez no mesmo lanche.")]
+    [SerializeField] private bool allowRepeatedIngredients = false;
+
     public event Action<State> OnStateChanged;
     public event Action<IngredientData> OnBaseSelected;
     public event Action<IngredientData> OnIngredientAdded;
     public event Action<ComboData> OnComboTriggered;
     public event Action<RecipeData, bool> OnRecipeDiscovered;
+    /// <summary>Lanche terminou sem bater com nenhuma receita. Envia a base (para fechar com o pão de cima).</summary>
+    public event Action<IngredientData> OnNoRecipe;
     public event Action<int> OnScoreChanged;
     public event Action<int, int> OnFinished;
     public event Action OnNotEnoughEnergy;
@@ -24,6 +29,8 @@ public class BurgerBuilder : MonoBehaviour
     public int Hearts { get; private set; }
     public int Stars { get; private set; }
     public IngredientData Base { get; private set; }
+    public bool AllowRepeatedIngredients => allowRepeatedIngredients;
+    public IReadOnlyList<IngredientData> Placed => placed;
     public int IngredientsRemaining => GameRules.IngredientsPerBurger - placed.Count;
 
     private readonly List<IngredientData> placed = new();
@@ -51,7 +58,7 @@ public class BurgerBuilder : MonoBehaviour
 
     public void SelectBase(IngredientData baseItem)
     {
-        if (CurrentState != State.SelectingBase) return;
+        if (CurrentState != State.SelectingBase || baseItem == null) return;
 
         if (energy != null && !energy.TryConsume(1))
         {
@@ -66,7 +73,8 @@ public class BurgerBuilder : MonoBehaviour
 
     public void AddIngredient(IngredientData ing)
     {
-        if (CurrentState != State.SelectingIngredients || placed.Contains(ing)) return;
+        if (CurrentState != State.SelectingIngredients || ing == null) return;
+        if (!allowRepeatedIngredients && placed.Contains(ing)) return;
 
         placed.Add(ing);
         AddScore(GameRules.PointsPerIngredient);
@@ -107,6 +115,10 @@ public class BurgerBuilder : MonoBehaviour
                 MarkDiscovered(recipe);
             }
             OnRecipeDiscovered?.Invoke(recipe, firstTime);
+        }
+        else
+        {
+            OnNoRecipe?.Invoke(Base);
         }
 
         SetState(State.Finished);

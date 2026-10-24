@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Parte VISUAL do prato: empilha as camadas, troca pelo lanche evoluído
-/// e solta corações e estrelas. Só escuta os eventos do BurgerBuilder.
+/// Parte VISUAL do prato: empilha as camadas, fecha com o pão de cima,
+/// troca pelo lanche evoluído (com piscada) e solta corações e estrelas.
+/// Só escuta os eventos do BurgerBuilder.
 /// </summary>
 public class BurgerPlateView : MonoBehaviour
 {
@@ -17,42 +18,60 @@ public class BurgerPlateView : MonoBehaviour
     [Header("Prato")]
     [Tooltip("Altura (em pixels) onde a base (pão) fica sobre o prato.")]
     [SerializeField] private float firstLayerY = 0f;
+    [Tooltip("Ajuste fino da altura do pão de cima (positivo sobe, negativo desce).")]
+    [SerializeField] private float topBunOffsetY = 0f;
 
     [Header("Efeitos")]
     [SerializeField] private GameObject heartPrefab;    // UI Image de coração
     [SerializeField] private GameObject starPrefab;     // UI Image de estrela
     [SerializeField] private Vector2 heartArea = new Vector2(140f, 25f); // meia-largura/altura da área dos corações
-    [SerializeField] private Vector2 starArea  = new Vector2(60f, 20f);
-    [SerializeField] private float starHeight  = 130f;  // estrelas nascem acima do lanche
-    [SerializeField] private float fxRise      = 70f;   // quanto sobem antes de sumir
-    [SerializeField] private float fxDuration  = 1.1f;
+    [SerializeField] private Vector2 starArea = new Vector2(60f, 20f);
+    [SerializeField] private float starHeight = 130f;  // estrelas nascem acima do lanche
+    [SerializeField] private float fxRise = 70f;   // quanto sobem antes de sumir
+    [SerializeField] private float fxDuration = 1.1f;
 
     [Header("Tempos")]
-    [SerializeField] private float dropHeight  = 250f;  // de que altura a camada cai
-    [SerializeField] private float dropTime    = 0.22f;
+    [SerializeField] private float dropHeight = 250f;  // de que altura a camada cai
+    [SerializeField] private float dropTime = 0.22f;
     [SerializeField] private float evolveDelay = 0.7f;  // pausa antes de virar o lanche bonito
+    [SerializeField] private int flashCount = 2;     // quantas vezes pisca do branco para o normal
+    [SerializeField] private float flashTime = 0.1f;  // duração de cada fase da piscada
 
     private readonly List<GameObject> layers = new();
     private float currentY;
+    private int dropsInProgress;
+
+    /// <summary>True enquanto alguma camada ainda está caindo (os botões usam isso para escurecer).</summary>
+    public bool IsBusy => dropsInProgress > 0;
 
     // ---------- Ligação com o BurgerBuilder ----------
     private void OnEnable()
     {
-        builder.OnStateChanged     += HandleState;
-        builder.OnBaseSelected     += HandleBase;
-        builder.OnIngredientAdded  += HandleIngredient;
-        builder.OnComboTriggered   += HandleCombo;
+        if (builder == null)
+        {
+            Debug.LogError("BurgerPlateView: o campo Builder está vazio.", this);
+            return;
+        }
+
+        builder.OnStateChanged += HandleState;
+        builder.OnBaseSelected += HandleBase;
+        builder.OnIngredientAdded += HandleIngredient;
+        builder.OnComboTriggered += HandleCombo;
         builder.OnRecipeDiscovered += HandleRecipe;
+        builder.OnNoRecipe += HandleNoRecipe;
         ClearAll();
     }
 
     private void OnDisable()
     {
-        builder.OnStateChanged     -= HandleState;
-        builder.OnBaseSelected     -= HandleBase;
-        builder.OnIngredientAdded  -= HandleIngredient;
-        builder.OnComboTriggered   -= HandleCombo;
+        if (builder == null) return;
+
+        builder.OnStateChanged -= HandleState;
+        builder.OnBaseSelected -= HandleBase;
+        builder.OnIngredientAdded -= HandleIngredient;
+        builder.OnComboTriggered -= HandleCombo;
         builder.OnRecipeDiscovered -= HandleRecipe;
+        builder.OnNoRecipe -= HandleNoRecipe;
     }
 
     private void HandleState(BurgerBuilder.State s)
@@ -73,6 +92,9 @@ public class BurgerPlateView : MonoBehaviour
 
     private void HandleRecipe(RecipeData r, bool firstTime) =>
         StartCoroutine(EvolveRoutine(r, firstTime));
+
+    private void HandleNoRecipe(IngredientData baseItem) =>
+        StartCoroutine(CloseBurgerRoutine(baseItem));
 
     // ---------- Camadas ----------
     private void AddLayer(IngredientData ing)
@@ -109,8 +131,10 @@ public class BurgerPlateView : MonoBehaviour
 
     private IEnumerator DropIn(RectTransform rt, float targetY)
     {
+        dropsInProgress++;
+
         Vector2 start = new Vector2(0f, targetY + dropHeight);
-        Vector2 end   = new Vector2(0f, targetY);
+        Vector2 end = new Vector2(0f, targetY);
         float t = 0f;
         while (t < dropTime && rt != null)
         {
@@ -120,15 +144,35 @@ public class BurgerPlateView : MonoBehaviour
             rt.anchoredPosition = Vector2.LerpUnclamped(start, end, eased);
             yield return null;
         }
+
+        dropsInProgress--;
         if (rt == null) yield break;
         rt.anchoredPosition = end;
         yield return Pop(rt, 1.08f, 0.12f);
+    }
+
+    // ---------- Lanche sem receita: o pão de cima desce e fecha ----------
+    private IEnumerator CloseBurgerRoutine(IngredientData baseItem)
+    {
+        if (baseItem == null || baseItem.topSprite == null)
+        {
+            Debug.LogWarning($"A base não tem Top Sprite, o lanche não fecha: {(baseItem != null ? baseItem.name : "null")}");
+            yield break;
+        }
+
+        while (IsBusy) yield return null;                 // espera o último ingrediente assentar
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        RectTransform rt = CreateImage("Pão de cima", baseItem.topSprite);
+        layers.Add(rt.gameObject);
+        yield return DropIn(rt, currentY + topBunOffsetY);
     }
 
     // ---------- Receita descoberta ----------
     private IEnumerator EvolveRoutine(RecipeData r, bool firstTime)
     {
         yield return new WaitForSecondsRealtime(evolveDelay);
+        while (IsBusy) yield return null;
 
         if (r.evolvedSprite != null)
         {
@@ -136,6 +180,20 @@ public class BurgerPlateView : MonoBehaviour
             RectTransform rt = CreateImage(r.recipeName, r.evolvedSprite);
             rt.anchoredPosition = new Vector2(0f, firstLayerY);
             layers.Add(rt.gameObject);                       // ...e entra o lanche bonito
+
+            // pisca do branco (silhueta) para o normal
+            if (r.silhouetteSprite != null)
+            {
+                var img = rt.GetComponent<Image>();
+                for (int i = 0; i < flashCount; i++)
+                {
+                    img.sprite = r.silhouetteSprite;
+                    yield return new WaitForSecondsRealtime(flashTime);
+                    img.sprite = r.evolvedSprite;
+                    yield return new WaitForSecondsRealtime(flashTime);
+                }
+            }
+
             StartCoroutine(Pop(rt, 1.15f, 0.2f));
         }
 
@@ -204,6 +262,7 @@ public class BurgerPlateView : MonoBehaviour
     private void ClearAll()
     {
         StopAllCoroutines();
+        dropsInProgress = 0;
         ClearLayers();
         if (fxRoot != null)
             for (int i = fxRoot.childCount - 1; i >= 0; i--)

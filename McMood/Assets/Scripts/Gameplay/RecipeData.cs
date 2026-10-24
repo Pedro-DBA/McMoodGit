@@ -11,10 +11,14 @@ public class RecipeData : ScriptableObject
     public List<IngredientData> ingredients = new();
     public Sprite normalSprite;
     public Sprite evolvedSprite;
-    [Min(0)] public int hearts = 4;
-    [Min(0)] public int stars  = 2;
 
-    public string Id  => string.IsNullOrEmpty(id) ? name : id;
+    [Tooltip("Silhueta branca do lanche evoluído. Usada na piscada antes de mostrar o lanche colorido.")]
+    public Sprite silhouetteSprite;
+
+    [Min(0)] public int hearts = 4;
+    [Min(0)] public int stars = 2;
+
+    public string Id => string.IsNullOrEmpty(id) ? name : id;
     public string Key => MakeKey(ingredients);
 
     public static string MakeKey(IEnumerable<IngredientData> items) =>

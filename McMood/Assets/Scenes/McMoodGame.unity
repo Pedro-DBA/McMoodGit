@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &15456526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2273,10 +2273,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc67e0b3e292f8644ba0012b99c9ad32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientListSwitcher
-  builder: {fileID: 0}
-  baseList: {fileID: 0}
-  ingredientList: {fileID: 0}
-  titleText: {fileID: 0}
+  builder: {fileID: 392999900}
+  baseList: {fileID: 1707165932}
+  ingredientList: {fileID: 15456525}
+  titleText: {fileID: 1327536340}
   baseTitle: Base
   ingredientsTitle: Ingredientes
 --- !u!114 &392999898
@@ -5037,8 +5037,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197.8, y: -41.865}
-  m_SizeDelta: {x: 290.77, y: 83.73}
+  m_AnchoredPosition: {x: -198.52, y: -41.865}
+  m_SizeDelta: {x: 289.32, y: 83.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980162167
 MonoBehaviour:
@@ -7734,12 +7734,12 @@ GameObject:
   - component: {fileID: 1327536341}
   - component: {fileID: 1327536340}
   m_Layer: 5
-  m_Name: Ingredientes
+  m_Name: Titulo_Lista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1327536339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7779,7 +7779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ingredientes
+  m_text: Titulo Lista
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be1c8b9ec10b0e142bd008a51188782c, type: 2}
   m_sharedMaterial: {fileID: 8663474383773243207, guid: be1c8b9ec10b0e142bd008a51188782c, type: 2}
@@ -9456,7 +9456,7 @@ GameObject:
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1707165933
 RectTransform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,6 @@ MonoBehaviour:
   id: hamburguer
   displayName: "Hamb\xFArguer"
   listIcon: {fileID: 21300000, guid: 1cc189c5f267b4a42983a1d4af0e3ba9, type: 3}
-  plateSprite: {fileID: 0}
+  plateSprite: {fileID: 21300000, guid: 1cc189c5f267b4a42983a1d4af0e3ba9, type: 3}
   topSprite: {fileID: 0}
   layerHeight: 45

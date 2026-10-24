@@ -8,6 +8,10 @@ public class EnergySystem : MonoBehaviour
     [Tooltip("Hora do dia em que o MP recarrega (0 = meia-noite, 4 = 4h da manhã...).")]
     [SerializeField, Range(0, 23)] private int resetHour = 0;
 
+    [Tooltip("Se marcado, o MP volta ao máximo toda vez que o jogo inicia (útil para demo/testes). " +
+             "Desmarque para valer só o reset diário.")]
+    [SerializeField] private bool resetOnPlay = true;
+
     public event Action<int, int> OnEnergyChanged;
 
     public int Current { get; private set; }
@@ -21,6 +25,14 @@ public class EnergySystem : MonoBehaviour
 
     private void Awake()
     {
+        if (resetOnPlay)
+        {
+            Current = maxEnergy;
+            lastRefillDay = TodayKey();
+            Save();
+            return;
+        }
+
         Current = Mathf.Clamp(PlayerPrefs.GetInt(KeyEnergy, maxEnergy), 0, maxEnergy);
         lastRefillDay = PlayerPrefs.GetString(KeyDay, TodayKey());
         CheckDailyRefill();
